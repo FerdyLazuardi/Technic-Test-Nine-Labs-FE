@@ -109,13 +109,13 @@ function FormReset() {
             <form onSubmit={handleSubmit}>
               <div className="d-flex input-pw mt-4">
                 <div>
-                  <p style={{ marginBottom: "0px" }}>Masukkan Password Baru</p>
+                  <p style={{ marginBottom: "0px" }}>Add a New Password</p>
                 </div>
               </div>
               <div className="input-group mb-2 mt-1">
                 <input
                   type={passwordVisible ? "text" : "password"}
-                  placeholder="Masukkan password"
+                  placeholder="Insert a password"
                   aria-label="Password"
                   className="form-control"
                   value={password}
@@ -135,13 +135,13 @@ function FormReset() {
               {/* Display error message */}
               <div className="d-flex input-pw mt-4">
                 <div>
-                  <p style={{ marginBottom: "0px" }}>Ulangi Password Baru</p>
+                  <p style={{ marginBottom: "0px" }}>Repeat a New Password</p>
                 </div>
               </div>
               <div className="input-group mb-2 mt-1">
                 <input
                   type={passwordVisible ? "text" : "password"}
-                  placeholder="Masukkan password"
+                  placeholder="Insert a password"
                   aria-label="Password"
                   className="form-control"
                   // value={password}
