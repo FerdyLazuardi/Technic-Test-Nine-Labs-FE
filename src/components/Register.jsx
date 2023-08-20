@@ -8,7 +8,8 @@ import "./Register.css";
 
 const Register = () => {
   const [name, setName] = useState("");
-  const [pin, setpin] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -18,8 +19,12 @@ const Register = () => {
     setName(event.target.value);
   };
 
-  const handlePinChange = (event) => {
-    setpin(event.target.value);
+  const handlepasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handleCloseModal = () => {
@@ -36,12 +41,21 @@ const Register = () => {
         "http://localhost:8000/api/v1/user/register",
         {
           name,
-          pin,
+          password,
+          email,
         }
       );
 
+      localStorage.setItem("email", email);
+
+      // Handle successful registration
+      const { newUser, otp } = response.data.data;
+      console.log(newUser);
+      console.log(otp);
+
       setName("");
-      setpin("");
+      setPassword("");
+      setEmail("");
       setSuccessMessage("registrasi berhasil");
       setError("");
       setShowModal(true);
@@ -67,10 +81,7 @@ const Register = () => {
         <div className="col-md-5 pt-3 ms-2 me-xxl-5 ps-xxl-4 ">
           <h1>Sign Up</h1>
 
-          <p className="mb-5">
-            Sign Up yourself to access To Do List Apps to help you manage
-            everything
-          </p>
+          <p className="mb-5">Sign Up yourself to access the homepage</p>
           {successMessage && (
             <Modal
               show={showModal}
@@ -91,19 +102,21 @@ const Register = () => {
                 />
                 <p className="text-center medium">
                   Congratulations, Registration Success. In a little while, you
-                  will be able to enjoy the pleasures of the world. Next, Please
-                  <Link
-                    to={"https://todog-apps.netlify.app/"}
-                    className="fw-bold"
-                  >
+                  will be able to enjoy the pleasures of the world. Next, please
+                  check your email to verify your account
+                  <Link to={"http://localhost:5173/verify"} className="fw-bold">
                     {" "}
-                    Login Here
+                    Verify Here
                   </Link>
                 </p>
               </Modal.Body>
               <Modal.Footer>
                 <Button
-                  style={{ padding: "10px 20px" }}
+                  style={{
+                    padding: "10px 20px",
+                    background: "#095f62",
+                    border: "none",
+                  }}
                   variant="primary"
                   onClick={handleCloseModal}
                 >
@@ -128,17 +141,29 @@ const Register = () => {
             </div>
             <div className="input-group mb-2">
               <input
-                type="password"
+                type="email"
                 className="form-control"
-                placeholder="Pin (must 4 characters)"
-                aria-label="Pin"
+                placeholder="Email"
+                aria-label="Email"
                 aria-describedby="basic-addon1"
-                value={pin}
-                onChange={handlePinChange}
-                maxLength={4}
+                value={email}
+                onChange={handleEmailChange}
                 style={{ fontFamily: "Segoe UI, sans-serif" }}
               />
             </div>
+            <div className="input-group mb-2">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                aria-label="password"
+                aria-describedby="basic-addon1"
+                value={password}
+                onChange={handlepasswordChange}
+                style={{ fontFamily: "Segoe UI, sans-serif" }}
+              />
+            </div>
+
             {error && <p className="error-message">{error}</p>}
             <div className="d-grid gap-2 mt-5">
               <button
@@ -152,7 +177,7 @@ const Register = () => {
           </form>
           <p className="mt-5 mb-1 text-center">Already have an account?</p>
           <p className="fw-bold text-center">
-            <Link to={"https://todog-apps.netlify.app/"}>SIGN IN</Link>
+            <Link to={"http://localhost:5173/"}>SIGN IN</Link>
           </p>
         </div>
 

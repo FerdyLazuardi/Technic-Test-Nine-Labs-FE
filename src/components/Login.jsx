@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 import dog from "/Group 11.png";
 
 const Login = () => {
-  const [pin, setpin] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handlePinChange = (event) => {
-    setpin(event.target.value);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -22,7 +26,8 @@ const Login = () => {
       const response = await axios.post(
         "http://localhost:8000/api/v1/user/login",
         {
-          pin,
+          email,
+          password,
         }
       );
 
@@ -32,7 +37,7 @@ const Login = () => {
       // Redirect ke halaman localhost:3000 setelah login berhasil
       window.location.href = "https://todog-apps.netlify.app/task";
     } catch (error) {
-      setError("Invalid pin");
+      setError("Invalid password");
     }
     setIsLoading(false);
   };
@@ -43,18 +48,29 @@ const Login = () => {
         <div className="col-md-5 pt-3 ms-2 me-xxl-5 ps-xxl-4 ">
           <h1>Sign In</h1>
 
-          <p className="mb-5">Ready to access To Do List Apps?</p>
+          <p className="mb-5">Ready to access a Homepage?</p>
           <form onSubmit={handleSubmit}>
+            <div className="input-group mb-2">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                aria-label="email"
+                aria-describedby="basic-addon1"
+                value={email}
+                onChange={handleEmailChange}
+                style={{ fontFamily: "Segoe UI, sans-serif" }}
+              />
+            </div>
             <div className="input-group mb-2">
               <input
                 type="password"
                 className="form-control"
-                placeholder="Pin (must 4 characters)"
-                aria-label="Pin"
+                placeholder="Passwword"
+                aria-label="password"
                 aria-describedby="basic-addon1"
-                value={pin}
-                onChange={handlePinChange}
-                maxLength={4}
+                value={password}
+                onChange={handlePasswordChange}
                 style={{ fontFamily: "Segoe UI, sans-serif" }}
               />
             </div>
@@ -71,7 +87,7 @@ const Login = () => {
           </form>
           <p className="mt-5 mb-1 text-center">Don't have an account?</p>
           <p className="fw-bold text-center">
-            <Link to={"https://todog-apps.netlify.app/register"}>SIGN UP</Link>
+            <Link to={"http://localhost:5173/register"}>SIGN UP</Link>
           </p>
         </div>
 

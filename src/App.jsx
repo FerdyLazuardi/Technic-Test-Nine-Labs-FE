@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Todo from "./components/Todo";
-import TodoPage from "./pages/TodoPage";
+import Verify from "./components/OTP";
+import FormForget from "./components/FormForget";
+import FormReset from "./components/FormReset";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/task" element={<TodoPage />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/forget-password" element={<FormForget />} />
+          <Route path="/reset-password" element={<FormReset />} />
         </Routes>
       </BrowserRouter>
     </>
