@@ -4,8 +4,6 @@ This is the Front End Repository for the Technical Test at Nine Fox Lab. Feel fr
 > [!IMPORTANT]
 > You must run the backend locally due to the unavailability of free PostgreSQL hosting for deployment.
 
-[Link Deployment](https://todog-apps.netlify.app/)
-
 ## Authors
 - [Ferdy Fadhil Lazuardi](https://github.com/FerdyLazuardi)
 
