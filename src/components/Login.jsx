@@ -74,6 +74,12 @@ const Login = () => {
                 style={{ fontFamily: "Segoe UI, sans-serif" }}
               />
             </div>
+            <div className="ms-auto">
+              <p className="mt-3" style={{ fontSize: "14px" }}>
+                {" "}
+                <Link to="/forget-password">Forget Password?</Link>
+              </p>
+            </div>
             {error && <p className="error-message">{error}</p>}
             <div className="d-grid gap-2 mt-5">
               <button

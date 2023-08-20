@@ -53,14 +53,11 @@ function FormForget() {
           <h1 className="fw-bold mb-4">Forget Password</h1>
 
           <form onSubmit={handleFormSubmit}>
-            <div>
-              <p className="mb-1">Email </p>
-            </div>
             <div className="input-group mb-3">
               <input
                 type="email"
                 className="form-control"
-                placeholder="Contoh: johndoe@gmail.com"
+                placeholder="Example: johndoe@gmail.com"
                 aria-label="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
